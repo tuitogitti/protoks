@@ -1,6 +1,17 @@
 SAUVAKÄVELYN DATA-ANALYYSIN PROTOTYYPPI
 
-Yritys X oli kiinnostunut hiihtotekniikan mittaamisesta liikesensoreiden avulla. Asiaa päätettiin tutkia kokeilemalla hiihtotekniikan mittausta Movesense-sensorilla (Movesense 2025). Mittaushetkellä hiihtomahdollisuutta ei ollut, joten mittaus tehtiin sauvakävelystä. Tämä ei haitannut mittauksia, koska tarkoituksena oli mitata nimenomaan sauvan liikettä sen kädensijan alle teipillä kiinnitetyllä sensorilla. Hiihto ja sauvakävely eivät tässä tapauksessa poikkea paljonkaan toisistaan. Data-analyysin prototyyppiä varten otettiin kaksi datanäytettä: imu_skdata1_031125.csv on tehotonta sauvakävelyä, jossa sauvojen liike tapahtuu kävelijän edessä ja liikelaajuus on pieni. imu_skdata2_031125.csv on tehokasta sauvakävelyä, jossa kävelijä työntää sauvaa voimakkaasti vartalon taakse ja liikelaajuus on suuri. Sauvakävelyn data-analyysin prototyyppi sisältää mittausten tulokset visualisoituina, tulosten muuntamisen tensoreiksi ja sauvakävelytyylejä edustavien tensorien luokittelun koneoppimismallilla. 
+Yritys X oli kiinnostunut hiihtotekniikan mittaamisesta liikesensoreiden avulla. 
+Asiaa päätettiin tutkia kokeilemalla hiihtotekniikan mittausta Movesense-sensorilla 
+(Movesense 2025). Mittaushetkellä hiihtomahdollisuutta ei ollut, joten mittaus tehtiin 
+sauvakävelystä. Tämä ei haitannut mittauksia, koska tarkoituksena oli mitata nimenomaan 
+sauvan liikettä sen kädensijan alle teipillä kiinnitetyllä sensorilla. Hiihto ja sauvakävely 
+eivät tässä tapauksessa poikkea paljonkaan toisistaan. Data-analyysin prototyyppiä varten 
+otettiin kaksi datanäytettä: imu_skdata1_031125.csv on tehotonta sauvakävelyä, jossa 
+sauvojen liike tapahtuu kävelijän edessä ja liikelaajuus on pieni. imu_skdata2_031125.csv 
+on tehokasta sauvakävelyä, jossa kävelijä työntää sauvaa voimakkaasti vartalon taakse ja 
+liikelaajuus on suuri. Sauvakävelyn data-analyysin prototyyppi sisältää mittausten tulokset 
+visualisoituina, tulosten muuntamisen tensoreiksi ja sauvakävelytyylejä edustavien tensorien 
+luokittelun koneoppimismallilla. 
 
 Mittausten tulokset on esitetty tiedostossa 1_visualization.ipynb
 
@@ -10,17 +21,52 @@ Luokitteleva koneoppimismalli luotiin tiedostossa 3_classific.ipynb
 
 Havaintoja:
 
-Inertiamittausyksiköt (IMU) ovat sensoreita, joita käytetään laitteen liikkeen ja asennon mittaamiseen. Sensorit koostuvat yleensa kiihtyvyysantureista, gyroskoopeista ja joskus magnetometreistä. Ne mittaavat kiihtyvyyttä, kulmanopeutta ja Maan magneettikentän voimakkuutta. Toimivassa inertiamittausyksikössä on oltava vähintään kiihtyvyysanturi ja gyroskooppi. Kiihtyvyysanturin ja gyroskoopin tuottaman datan voi yhdistää IMU-fuusiolla, jolloin saadaan näiden yhdistelmän tuottama data. Se voi olla parempi vertailuanalyysin pohjana kuin erilliset kiihtyvyys- ja gyroskooppidata. Mittausyksikön täytyy pysyä sauvan suhteen koko ajan täysin paikallaan, se ei saa liikkua missään suunnassa. Se pitää siis kiinnittää sauvaan pysyvästi. Esim. kiinalaisessa tutkimuksessa (Gyo ym. 2024) mittausyksikkö oli sijoitettu sauvan kahvan alapuolelle putken sisälle.
+Inertiamittausyksiköt (IMU) ovat sensoreita, joita käytetään laitteen liikkeen ja asennon 
+mittaamiseen. Sensorit koostuvat yleensa kiihtyvyysantureista, gyroskoopeista ja joskus 
+magnetometreistä. Ne mittaavat kiihtyvyyttä, kulmanopeutta ja Maan magneettikentän 
+voimakkuutta. Toimivassa inertiamittausyksikössä on oltava vähintään kiihtyvyysanturi 
+ja gyroskooppi. Kiihtyvyysanturin ja gyroskoopin tuottaman datan voi yhdistää IMU-fuusiolla, 
+jolloin saadaan näiden yhdistelmän tuottama data. Se voi olla parempi vertailuanalyysin 
+pohjana kuin erilliset kiihtyvyys- ja gyroskooppidata. Mittausyksikön täytyy pysyä sauvan 
+suhteen koko ajan täysin paikallaan, se ei saa liikkua missään suunnassa. Se pitää siis 
+kiinnittää sauvaan pysyvästi. Esim. kiinalaisessa tutkimuksessa (Gyo ym. 2024) mittausyksikkö 
+oli sijoitettu sauvan kahvan alapuolelle putken sisälle.
 
-Mahdollinen tuote voisi olla sauvaan sijoitettu kiihtyvyys/kulmamittari, joka tarjoaa datan bluetoothilla puhelimelle tai älykellolle, joka analysoi dataa reaaliajassa ja antaa vihjeitä suoritustekniikasta. Tähän tarvitaan paljon referenssiaineistoa hyvästä suoritustekniikasta. Eli x kpl mittaustuloksia hyvästä tekniikasta mielellään erilaisissa maastonkohdissa ja eri nopeuksilla. Tästä datasta pitäisi tuottaa hyvän suoritustekniikan malli, johon voidaan verrata käyttäjän tuottamaa dataa. Voitaisiin yrittää esim. laskea hyvän tekniikan aikasarjadatojen keskiarvot ja verrata käyttäjän suoritusta niihin. Vertailu voitaisiin yrittää tehdä aikasarjadatan samankaltaisuutta mittavilla algoritmeilla (esim. Eucleidean distance, Cosine similarity).
+Mahdollinen tuote voisi olla sauvaan sijoitettu kiihtyvyys/kulmamittari, joka tarjoaa datan 
+bluetoothilla puhelimelle tai älykellolle, joka analysoi dataa reaaliajassa ja antaa 
+vihjeitä suoritustekniikasta. Tähän tarvitaan paljon referenssiaineistoa hyvästä 
+suoritustekniikasta. Eli x kpl mittaustuloksia hyvästä tekniikasta mielellään erilaisissa 
+maastonkohdissa ja eri nopeuksilla. Tästä datasta pitäisi tuottaa hyvän suoritustekniikan 
+malli, johon voidaan verrata käyttäjän tuottamaa dataa. Voitaisiin yrittää esim. laskea 
+hyvän tekniikan aikasarjadatojen keskiarvot ja verrata käyttäjän suoritusta niihin. 
+Vertailu voitaisiin yrittää tehdä aikasarjadatan samankaltaisuutta mittavilla algoritmeilla 
+(esim. Eucleidean distance, Cosine similarity).
 
-Koneoppiminen, eli datan luokittelu yksinkertaisella neuroverkolla voisi kuitenkin tuottaa parempia tuloksia. Tätä kokeiltiin, ja havaittiin, että huomattavasti tosistaan poikkeavat suoritustekniikat on varsin helppo erotella. Sen sijaan pienten tekniikkaerojen havaitseminen on todennäköisesti vaikeaa. Mittaustarkkuuden kannalta ongelmana ovat erilaiset maastonkohdat, erilaiset kelit, hiihtäjien mittasuhteiden erot yms. Murtomaahiihdossa on hyvin paljon erilaisia muuttujia, joilla on vaikutusta mittausten tarkkuuteen ja toistettavuuteen. Suuntaa-antavia tuloksia on varmaankin mahdollista saada, mutta hyviä ja tarkkoja tuloksia on hyvin vaikea saada. Myös sensorin taustakohina vaikuttaa tuloksiin. Varsinkin pienet tekniikkaerot hukkuvat helposti kohinaan. Sensoridata kannattaa ainakin filtteröidä sopivalla algoritmilla (esim. AHRS/Kalman filter). Filtteröinti on tehty prototyypissä.
+Koneoppiminen, eli datan luokittelu yksinkertaisella neuroverkolla voisi kuitenkin tuottaa 
+parempia tuloksia. Tätä kokeiltiin, ja havaittiin, että huomattavasti tosistaan poikkeavat 
+suoritustekniikat on varsin helppo erotella. Sen sijaan pienten tekniikkaerojen havaitseminen 
+on todennäköisesti vaikeaa. Mittaustarkkuuden kannalta ongelmana ovat erilaiset maastonkohdat,
+erilaiset kelit, hiihtäjien mittasuhteiden erot yms. Murtomaahiihdossa on hyvin paljon 
+erilaisia muuttujia, joilla on vaikutusta mittausten tarkkuuteen ja toistettavuuteen. 
+Suuntaa-antavia tuloksia on varmaankin mahdollista saada, mutta hyviä ja tarkkoja tuloksia 
+on hyvin vaikea saada. Myös sensorin taustakohina vaikuttaa tuloksiin. Varsinkin pienet 
+tekniikkaerot hukkuvat helposti kohinaan. Sensoridata kannattaa ainakin filtteröidä sopivalla 
+algoritmilla (esim. AHRS/Kalman filter). Filtteröinti on tehty prototyypissä.
 
-Saman hiihtäjän tekniikan vertailu itseensä vakio-olosuhteissa olisi todennäköisesti helpompi toteuttaa. Vertailu omaan tekniikkaan, joka on luokiteltu hyväksi, voisi paljastaa esim. tekniikan muuttumisen väsyneenä. IMU-datasta saadaan selville esim. sivuttaisheilunta, joka voi heikentää taloudellisuutta. Voitaisiin myös tutkia, millaisella IMU-datalla henkilön hapenkulutus tietyllä nopeudella on pienin. Tämä vaatisi liikedatan analyysin yhdistämisen hengityskaasumittauksiin. Toimeksiantaja totesi, että kukaan ei oikein tiedä, millaista on "hyvä hiihto". Ehkäpä se on sellaista, että liikutaan mahdollisimman nopeasti eteenpäin mahdollisimman pienellä energiankulutuksella eli hapenkulutuksella.
+Saman hiihtäjän tekniikan vertailu itseensä vakio-olosuhteissa olisi todennäköisesti helpompi 
+toteuttaa. Vertailu omaan tekniikkaan, joka on luokiteltu hyväksi, voisi paljastaa esim. 
+tekniikan muuttumisen väsyneenä. IMU-datasta saadaan selville esim. sivuttaisheilunta, 
+joka voi heikentää taloudellisuutta. Voitaisiin myös tutkia, millaisella IMU-datalla 
+henkilön hapenkulutus tietyllä nopeudella on pienin. Tämä vaatisi liikedatan analyysin 
+yhdistämisen hengityskaasumittauksiin. Toimeksiantaja totesi, että kukaan ei oikein tiedä, 
+millaista on "hyvä hiihto". Ehkäpä se on sellaista, että liikutaan mahdollisimman nopeasti 
+eteenpäin mahdollisimman pienellä energiankulutuksella eli hapenkulutuksella.
 
 Lähdekirjallisuutta:
 
 Movesense documentation 2025. https://www.movesense.com/docs/.
 
-Guo, Y.; Ju, R.; Li, K.; Lan, Z.; Niu, L.; Hou, X.; Qian, S.; Chen, W.; Liu, X.; Li, G.; et al. A Smart Ski Pole for Skiing Pattern Recognition and Quantification Application. Sensors 2024, 24, 5291. https://doi.org/10.3390/s24165291.
+Guo, Y.; Ju, R.; Li, K.; Lan, Z.; Niu, L.; Hou, X.; Qian, S.; Chen, W.; Liu, X.; Li, G.; 
+et al. A Smart Ski Pole for Skiing Pattern Recognition and Quantification Application. 
+Sensors 2024, 24, 5291. https://doi.org/10.3390/s24165291.
  
