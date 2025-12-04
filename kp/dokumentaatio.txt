@@ -38,16 +38,18 @@ mahdollista ladata myös omalle koneelle, jos näytönohjainmuistia on riittäv�
 asentaa omalle koneelle.
 
 Projekti tarjosi yhden näkökulman toimeksiantajan datan hyödyntämiseen. Paljon muitakin mahdollisuuksia on.
-Datan hyödyntäminen edellyttää usein sen rakenteistamista, eli siirtämistä esim. NoSQL- tai relaatiotietokantaan.
-Datasta voidaan tarjota REST- tai GraphQL-API, jolloin mahdolliset yhteistyökumppanit, jotka tarvitsevat dataa,
-saavat sen helposti omiin sovelluksiinsa API-päätepisteistä, eli web-osoitteista. Datan esittämiseen verkkosivuilla
-tai mobiililaiteissa on paljon muitakin ratkaisuja kuin tässä projektissa esitetty. Jos data on rakenteistettu, 
-siihen voidaan kohdistaa esim. reaktiivinen haku, joka reagoi jokaisen merkin syöttämiseen hakukenttään. Tällainen
-haku on erittäin tehokas ja nopea, jos etsitään esim. tiettyyn teemaan liittyviä tekstejä. Esimerkki reaktiivisesta
-hausta on osoitteessa https://github.com/tuitogitti/ang-reactsearch. 
+Datan hyödyntäminen edellyttää usein sen rakenteistamista, eli siirtämistä esim. NoSQL- tai relaatio-
+tietokantaan. Datasta voidaan tarjota REST- tai GraphQL-API, jolloin mahdolliset yhteistyökumppanit, jotka 
+tarvitsevat dataa, saavat sen helposti omiin sovelluksiinsa API-päätepisteistä, eli web-osoitteista. Datan 
+esittämiseen verkkosivuilla tai mobiililaiteissa on paljon muitakin ratkaisuja kuin tässä projektissa 
+esitetty. Jos data on rakenteistettu, siihen voidaan kohdistaa esim. reaktiivinen haku, joka reagoi 
+jokaisen merkin syöttämiseen hakukenttään. Tällainen haku on erittäin tehokas ja nopea, jos etsitään esim. 
+tiettyyn teemaan liittyviä tekstejä. Yksinkertainen esimerkki reaktiivisesta hausta on osoitteessa 
+https://github.com/tuitogitti/ang-reactsearch. 
 
-Tekoäly tarjoaa uusia mahdollisuuksia datan hyödyntämiseen. Tekoälyn avulla voidaan tehdä hakuja myös dataan, 
-jolla ei ole mitään rakennetta. Esim. tässä projektissa luodut kuvien "labelit" eli metatiedot on varsin helppo 
-tuottaa esim. GPT:llä tai Geminillä. Riittää kun tarjoaa kuvat kansiossa ja pyytää luomaan niille metatiedot. Erittäin
-suurten kuvamäärien tapaukseessa voi käyttää tarkoitukseen erityisesti kehitettyjä malleja.
+Tekoäly tarjoaa uusia mahdollisuuksia datan hyödyntämiseen. Tekoälyn avulla voidaan tehdä hakuja myös 
+dataan, jolla ei ole mitään rakennetta. Esim. tässä projektissa luodut kuvien "labelit" eli metatiedot on 
+varsin helppo tuottaa esim. GPT:llä tai Geminillä. Riittää kun tarjoaa kuvat kansiossa ja pyytää luomaan 
+niille metatiedot. Erittäin suurten kuvamäärien tapaukseessa voi käyttää tarkoitukseen erityisesti 
+kehitettyjä malleja.
 
