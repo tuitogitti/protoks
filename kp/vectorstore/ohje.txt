@@ -1,0 +1,18 @@
+OPENAI:n VECTOR STORE
+
+Aineisto.txt ja kuvatekstit.txt pitää laittaa Openai:n vector storeen.
+
+Kirjaudu Openai-platformiin ja valitse Dashboard->Storage.
+Luo kaksi uutta vector storea, joista toiseen lisäät sisällöksi tiedoston
+aineisto.txt ja toiseen tiedoston kuvatekstit.txt.
+
+Ota talteen vector storejen id:t ja kirjoita ne .env-tiedostoon.
+
+Huomaa että tässä git-julkaisussa olevat aineisto.txt ja kuvatekstit.txt
+ovat pelkkiä "placeholdereita", joissa ei ole oikeaa sisältöä. Vector storeihin 
+pitää laittaa riittävästi oikeaa sisältöä, jotta sovellus toimisi kunnolla.
+
+
+
+
+

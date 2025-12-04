@@ -1,0 +1,53 @@
+DATAN TEKOÄLYAVUSTEISEN HYÖDYNTÄMISEN PROTOTYYPPI
+
+Yritys Y oli kiinnostunut omistamansa datan hyödyntämisestä esimerkiksi sisäisessä käytössä ja
+markkinoinnissa. Prototyyppiprojektissa päätettiin kokeilla datan hyödyntämistä generatiivisen 
+tekoälyn avulla. Lopputuotteena toteutettiin pieni sovellus, joka hyödyntää yrityksen dataa ja tuottaa 
+siitä generoitua tekstiä ja semanttisen kuvahaun. Yrityksellä oli käytössään OpenAI:n alusta, joten
+päätimme käyttää samaa alustaa sovelluksen kehityksessä. Sovelluksen käyttö vaatii OpenAI:n API KEY:n
+ja kaksi vector storea, joiden luontiin on ohje vectorstore-kansiossa.
+
+Sovellus sisältää seuraavat osat:
+
+-server.js - Node.js:llä ja Express-sovelluskehyksellä toteutettu palvelinpuolen sovellus
+-client.html - JS:llä ja HTML:llä toteutettu asiakaspuolen sovellus
+-client.css - asiakassovelluksen tyylit
+-pics-kansio - kuvat semanttista kuvahakua varten
+-vectorstore-kansio - vector storeihin laitettava data ja ohje
+-.env - Node.js:n ympäristömuuttujia sisältävä tiedosto, jonne laitetaan API-keyt yms.
+-package.json - projektin JSON-kuvaus, jonka perusteella voidaan asentaa vaaditut npm-paketit
+
+Havaintoja:
+
+Sovellus toimii odotetulla tavalla, eli pääosin hyvin. Sovelluksen tuottaman tekstin laatu riippuu 
+vector storessa olevan aineiston laadusta ja määrästä. Parhaimmillaan se on erinomainen. Myös kuvien 
+semanttinen haku toimii hyvin, jos kuvien metatiedot vector storessa ovat riittävän hyviä.
+
+Sovellus on siis RAG-sovellus (Retrieval Augmented Generation). Sen tuottama tulos on riippuvainen 
+vector storessa olevasta datasta. Se ei kuitenkaan hae suoraa vastausta vector storen aineistosta, vaan
+rakentaa vastauksen yhdistelemällä siellä olevaa dataa. Myös suora haku aineistosta oltaisiin voitu 
+toteuttaa.
+
+Sovelluksen ongelmana on käytetyn kielimallin, eli GPT-5:n hitaus. Web-API:n kautta käytettäessä GPT-5:n
+ominaisuutena on 10-20 sekunnin viive vastauksissa, kun malli "miettii". Uusien mallien kehittyessä
+tämä ongelma kuitenkin poistunee. Nopeammilla malleilla tulosten laatu ei vielä tässä vaiheessa ole yhtä 
+hyvä.
+
+Sovelluksen olisi voinut toteuttaa myös ilman riippuvuutta OpenAI:n palveluista. Hyviä kielimalleja on
+mahdollista ladata myös omalle koneelle, jos näytönohjainmuistia on riittävästi. Vektoritietokannan voi
+asentaa omalle koneelle.
+
+Projekti tarjosi yhden näkökulman toimeksiantajan datan hyödyntämiseen. Paljon muitakin mahdollisuuksia on.
+Datan hyödyntäminen edellyttää usein sen rakenteistamista, eli siirtämistä esim. NoSQL- tai relaatiotietokantaan.
+Datasta voidaan tarjota REST- tai GraphQL-API, jolloin mahdolliset yhteistyökumppanit, jotka tarvitsevat dataa,
+saavat sen helposti omiin sovelluksiinsa API-päätepisteistä, eli web-osoitteista. Datan esittämiseen verkkosivuilla
+tai mobiililaiteissa on paljon muitakin ratkaisuja kuin tässä projektissa esitetty. Jos data on rakenteistettu, 
+siihen voidaan kohdistaa esim. reaktiivinen haku, joka reagoi jokaisen merkin syöttämiseen hakukenttään. Tällainen
+haku on erittäin tehokas ja nopea, jos etsitään esim. tiettyyn teemaan liittyviä tekstejä. Esimerkki reaktiivisesta
+hausta on osoitteessa https://github.com/tuitogitti/ang-reactsearch. 
+
+Tekoäly tarjoaa uusia mahdollisuuksia datan hyödyntämiseen. Tekoälyn avulla voidaan tehdä hakuja myös dataan, 
+jolla ei ole mitään rakennetta. Esim. tässä projektissa luodut kuvien "labelit" eli metatiedot on varsin helppo 
+tuottaa esim. GPT:llä tai Geminillä. Riittää kun tarjoaa kuvat kansiossa ja pyytää luomaan niille metatiedot. Erittäin
+suurten kuvamäärien tapaukseessa voi käyttää tarkoitukseen erityisesti kehitettyjä malleja.
+

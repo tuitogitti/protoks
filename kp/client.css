@@ -1,0 +1,38 @@
+#saveBtn,
+#generateBtn,
+#searchCardBtn {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-right: 20px;
+}
+#searchCardBtn {
+visibility: hidden;
+
+}
+.modelcontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#card-container, #poem-container {
+margin-top: 10px;
+margin-bottom: 20px;
+color: rgb(126, 126, 126);
+}
+
+h4 {
+  margin-top: 10px;
+  color: DodgerBlue;
+}
+h5 {
+  margin-top: 10px;
+}
+.bm {
+  margin-bottom: 10px;
+}
+label {
+  color: rgb(126, 126, 126);
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- client.html on asiakassovellus, joka on yhteydessä server.js-palvelimeen.
+ Sovellus sisältää lomakkeita, joiden avulla kerätään dataa, joka lähetetään 
+ palvelimelle POST-pyyntöjen mukana. POST-pyyntöjä tehdään kaksi:
+ 1) runon hakupyyntö ja 2) kuvan hakupyyntö. Jälkimmäinen suoritetaan 
+ automaattisesti samalla kun tehdään runon hakupyyntö. Näin tehdään, jotta
+ saadaan vähennettyä GPT5-kielimallin pyynnön viivettä, eli molempia pyyntöjä
+ suoritetaan samanaikaisesti.
+ -->
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Isänpäiväkorttirunohärveli</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="client.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="modelcontainer">
+        <h4>Isänpäiväkorttirunohärveli</h4>
+        <select id="model-select" class="form-control">
+          <option value="gpt-5">GPT-5-mini</option>
+          <option value="gpt-5-mini">GPT-5-nano</option>
+          <option value="gpt-5-nano">GPT-5</option>
+        </select>
+      </div>
+      <div class="bm">
+        <label for="textarea"
+          >Kerro runon aihe:</label
+        >
+        <textarea
+          id="inputText"
+          class="form-control"
+          cols="25"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="bm">
+        <label for="focus-select">Valitse kohdennus:</label>
+        <select id="focus-select" class="form-control">
+          <option value="">Ei valintaa</option>
+          <option value="lapselta isälle">Lapselta isälle</option>
+          <option value="lapselta vaarille">Lapselta vaarille</option>
+          <option value="aikuiselta isälle">Aikuiselta isälle</option>
+          <option value="puolisolta isälle">Puolisolta isälle</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="maxlen-input">Valitse maksimipituus sanoina:</label>
+        <output for="rangex" id="rangeValue" aria-hidden="true"></output><br />
+        <input
+          type="range"
+          class="form-range"
+          min="10"
+          max="40"
+          value="30"
+          id="range-input"
+        />
+      </div>
+
+      <button id="generateBtn" class="btn btn-outline-primary">
+        Hae kortti ja luo runo
+      </button>
+      <button id="searchCardBtn" class="btn btn-outline-primary"></button>
+      
+      <div id="card-container"></div>
+      <div id="poem-container"></div>
+
+      <script>
+        const rangeInput = document.getElementById('range-input');
+        const rangeOutput = document.getElementById('rangeValue');
+        rangeOutput.textContent = rangeInput.value;
+        rangeInput.addEventListener('input', function () {
+          rangeOutput.textContent = this.value;
+        });
+
+        const modelSelect = document.getElementById('model-select');
+        const generateBtn = document.getElementById('generateBtn');
+        const poemContainer = document.getElementById('poem-container');
+        const cardContainer = document.getElementById('card-container');
+        const focusSelect = document.getElementById('focus-select');
+
+        generateBtn.addEventListener('click', async () => {
+          const searchCardBtn = document.getElementById('searchCardBtn');
+          searchCardBtn.click(); // ajan säästämiseksi laukaistaan kortin haku heti
+          cardContainer.textContent = 'Korttia etsitään hetken aikaa...';
+          poemContainer.textContent = 'Runoa pohditaan hetken aikaa...';
+
+          // Valitaan arvo pudotusvalikosta tai inputista
+          const selectedModel = modelSelect.value;
+          const description = inputText.value;
+          const selectedFocus = focusSelect.value;
+          const maxRange = rangeInput.value;
+
+          try {
+            // Haetaan runo speksien perusteella
+            const response = await fetch('http://localhost:3000/api/getpoem', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                model: selectedModel,
+                desc: description,
+                focus: selectedFocus,
+                maxlen: maxRange,
+              }),
+            });
+            const data = await response.json();
+
+              if (data.success) {
+              // Korvataan rivinvaihdot <br>-tageilla
+              const formattedPoem = data.poem.replace(/\n/g, '<br>');
+              // Runo HTML-sivulle
+              poemContainer.innerHTML = formattedPoem;
+            } else {
+              poemContainer.textContent =
+                'Virhe runon noutamisessa: ' + data.message;
+            } 
+          } catch (error) {
+            console.error('Fetch-virhe:', error);
+            poemContainer.textContent = 'Virhe runon noutamisessa.';
+          }
+        });
+
+        // laukaistaan automaattisesti
+        searchCardBtn.addEventListener('click', async () => {
+          const description = inputText.value;
+          console.log(description);
+          const selectedModel = modelSelect.value;
+
+          try {
+            // Haetaan kuva kuvauksen perusteella
+            const response = await fetch('http://localhost:3000/api/getpic', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                model: selectedModel,
+                desc: description,
+              }),
+            });
+            const data = await response.json();
+
+            if (data.success) {
+              const pic = data.pic;
+              // kuva HTML-sivulle
+              cardContainer.innerHTML = `<img src="pics/${pic}" />`;
+            } else {
+              cardContainer.textContent =
+                'Virhe kuvan noutamisessa: ' + data.message;
+            }
+          } catch (error) {
+            console.error('Fetch-virhe:', error);
+            cardContainer.textContent = 'Virhe kuvan noutamisessa.';
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
