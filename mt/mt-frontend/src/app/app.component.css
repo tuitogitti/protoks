@@ -1,0 +1,13 @@
+.quide-btn {
+  background-color: #f2f4f4;
+  margin-left: 10px;
+  box-shadow: 1px 1px 1px 2px rgba(88, 87, 87, 0);
+}
+
+.quide-btn:hover {
+  background-color: #ebedef;
+}
+
+.right {
+  float: right;
+}

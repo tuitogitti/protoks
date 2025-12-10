@@ -1,0 +1,197 @@
+{
+  "title": "Palautekysely",
+  "pageNextText": "Seuraava",
+  "pagePrevText": "Takaisin",
+  "completeText": "Lähetä",
+  "pages": [
+    {
+      "elements": [
+        {
+          "type": "text",
+          "name": "Tunnistautuminen",
+          "title": "Kirjoita tähän palvelukotisi nimi."
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Miten vastaat kyselyyn",
+          "title": "Miten vastaat kyselyyn?",
+          "choices": [
+            "Itsenäisesti ilman muiden apua",
+            "Läheisen kanssa",
+            "Tutun hoitajan kanssa",
+            "Muun hoitajan tai avustajan kanssa",
+            "Kysymyksiin vastasi asiakkaan luvalla läheinen"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "rating",
+          "rateMin": 0,
+          "rateMax": 5,
+          "name": "Suosittelisinko palvelukotia",
+          "title": "Voisitko suositella palvelukotia läheisellesi?",
+          "mininumRateDescription": "En suosittelisi",
+          "maximumRateDescription": "Suosittelisin lämpimästi"
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Toiveitani otetaan huomioon",
+          "title": "Toiveitani otetaan huomioon hoivassa ja palvelussa.",
+          "choices": [
+            "Täysin eri mieltä",
+            "Melko eri meltä",
+            "En osaa sanoa",
+            "Melko samaa mieltä",
+            "Täysin samaa mieltä"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Saan tarpeeksi apua",
+          "title": "Saan tarpeeksi apua ja palvelua.",
+          "choices": [
+            "Täysin eri mieltä",
+            "Melko eri meltä",
+            "En osaa sanoa",
+            "Melko samaa mieltä",
+            "Täysin samaa mieltä"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Hoitajilla on tarpeeksi aikaa minulle",
+          "title": "Hoitajilla on tarpeeksi aikaa minulle.",
+          "choices": [
+            "Täysin eri mieltä",
+            "Melko eri meltä",
+            "En osaa sanoa",
+            "Melko samaa mieltä",
+            "Täysin samaa mieltä"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Kärsitkö yksinäisyydestä",
+          "title": "Kärsitkö yksinäisyydestä?",
+          "choices": ["En koskaan", "Harvoin", "Usein", "Koko ajan"]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Minulla on turvallinen olo",
+          "title": "Minulla on turvallinen olo.",
+          "choices": [
+            "Täysin eri mieltä",
+            "Melko eri meltä",
+            "En osaa sanoa",
+            "Melko samaa mieltä",
+            "Täysin samaa mieltä"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Virkistystoimintaa on tarpeeksi",
+          "title": "Minulle on tarjolla tarpeeksi sellaista virkistystoimintaa josta pidän.",
+          "choices": [
+            "Täysin eri mieltä",
+            "Melko eri meltä",
+            "En osaa sanoa",
+            "Melko samaa mieltä",
+            "Täysin samaa mieltä"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Pääsen ulkoilemaan",
+          "title": "Pääsen ulkoilemaan tarpeeksi usein.",
+          "choices": [
+            "Täysin eri mieltä",
+            "Melko eri meltä",
+            "En osaa sanoa",
+            "Melko samaa mieltä",
+            "Täysin samaa mieltä"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Olen tyytyväinen ruokaan",
+          "title": "Olen tyytyväinen ruokaan.",
+          "choices": [
+            "Täysin eri mieltä",
+            "Melko eri meltä",
+            "En osaa sanoa",
+            "Melko samaa mieltä",
+            "Täysin samaa mieltä"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Olen tyytyväinen nykyiseen elämääni",
+          "title": "Olen tyytyväinen nykyiseen elämääni.",
+          "choices": [
+            "Täysin eri mieltä",
+            "Melko eri meltä",
+            "En osaa sanoa",
+            "Melko samaa mieltä",
+            "Täysin samaa mieltä"
+          ]
+        }
+      ]
+    },
+    {
+      "elements": [
+        {
+          "type": "comment",
+          "maxLength": 512,
+          "rows": 6,
+          "autoGrow": true,
+          "name": "Vapaa palaute",
+          "title": "Voit antaa vielä vapaamuotoista palautetta saamistasi hoivapalveluista. Paina lopuksi \"Lähetä\" -nappia."
+        }
+      ]
+    }
+  ],
+  "completedHtml": "<h3>Kiitos vastauksesta!</h3>"
+}

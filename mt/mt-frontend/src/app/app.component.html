@@ -1,0 +1,31 @@
+<span class="right">
+  <!-- Tulosta- ja Ohje-napit vievät PDF-muotoisiin 
+   dokumentteihin, jotka ovat palvelukodille yksilöllisiä,
+   joten niitä ei ole tässä mukana. 
+   -->
+  <button
+    onclick="location.href='survey.pdf'"
+    class="sd-btn sd-navigation__next-btn quide-btn"
+  >
+    Tulosta
+  </button>
+  <button
+    onclick="location.href='quide.pdf'"
+    class="sd-btn sd-navigation__next-btn quide-btn"
+  >
+    Ohje
+  </button></span
+>
+
+<!--
+defer-lohko hidastaa komponentin latautumista, niin että
+surveyJson-data ehtisi saapua komponenttiin palvelimelta,
+mikäli se olisi palvelimella. Tässä lohkoa ei tarvita, sillä
+kyselydata on frontendissä.
+-->
+
+<!--@defer { -->
+<!-- Kysely välitetään Survey-komponenttiin -->
+<app-survey [surveyJson]="surveyJson"></app-survey>
+
+<!-- } -->
