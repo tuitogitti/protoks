@@ -4,7 +4,7 @@
  */
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
-// Asetetaan Content-Type, jotta selain antaa tekstimuotoisen vastauksen
+// Asetetaan Content-Type, jotta selain antaa tekstimuotoisen vastauksen.
 header('Content-Type: text/plain');
 
 // Otetaan vastaan JSON-data
@@ -34,18 +34,12 @@ if ($arr1["Tunnistautuminen"] === 'mt' || 'MT' || 'Mt') {
   
   $file = 'data/results.json';
 
-  // Avataan tiedosto liittämistä varten ('a' - append)
+  // Avataan tiedosto liittämistä varten ('a' - append).
   $openfile = fopen($file, 'a');
 
-  // Varmistetaan että kaikki tulokset ovat taulukossa.
-  // Lukua on muutettava jos kysymysten lukumäärää muutetaan.
-  if (count($arr2) == 13) {
-
     if ($openfile) {
-      // Kirjoitetaan uusi JSON-data tiedostoon ja lisää rivinvaihto
+      // Kirjoitetaan uusi JSON-data tiedostoon ja lisätään rivinvaihto.
       fwrite($openfile, $json_data2 . "\n");
-
       fclose($openfile);
     }
-  }
 }
