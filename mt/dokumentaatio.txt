@@ -1,0 +1,46 @@
+HELPPOKÄYTTÖISEN ASIAKASPALAUTEJÄRJESTELMÄN PROTOTYYPPI
+
+Yritys Z tarvitsi mahdollisimman helppokäyttöistä asiakaspalautejärjestelmää. Olemassa 
+olevat järjestelmät koettiin liian hankaliksi käyttää. Lyhyen pohdinnan jälkeen päätettiin 
+toteuttaa järjestelmä, jossa sama kysely on toiminnassa koko ajan nonstop-periaatteella, 
+ja uusia kyselyitä ei tarvitse koskaan luoda. Kaikki tulokset kootaan yhteen tauluun/tiedostoon, 
+ja niiden tunnisteena on aikaleima. Tulosyhteenvetoja voi tehdä eri ajanjaksoilta, jolloin 
+nähdään erittäin hyvin tulosten kehitys. Esim. verrataan kymmentä vanhinta tulosta kymmeneen 
+uusimpaan. Tällöin hallinnoijan ei tarvitse ylläpitää sovellusta millään tavalla. Riittää kun 
+kirjautuu tulossivulle ja valitsee ajanjaksot, joille tekee tulosten vertailun. Jos haluaa, 
+voi tuloksia myös tarkastella valitsemaltaan ajanjaksolta ilman vertailua.
+
+Sovellus on jaettu kahteen osaan:
+
+-mt-frontend - sisältää sovelluksen frontendin
+-mt-backend - sisältää sovelluksen backendin
+
+HUOM! Backendin data-kansion tulee sijaita julkisesti saatavilla olevan www- tai public_html 
+-kansion ulkopuolella. Sijainti Linux-palvelimella voi olla esimerkiksi /home/username/data.
+Data-kansiossa sijaitsevaan Results.json-tiedostoon on oltava kirjoitusoikeudet.
+
+Frontend: Typescript/Angular/Surveyjs. Palautekysely on kuvattu JSON-muodossa, ja sitä voi 
+muokata. Tämä toiminto on kuitenkin oletuksena pois päältä, ja käytössä on vain yksi ennalta 
+määritelty kysely. Frontendissä tulokset kerätään JSON-muodossa, ja JSON-data välitetään 
+Backendiin. Frontendissä on myös mahdollisuus tulostaa kysely. Kyselyyn kirjautuminen on tehty 
+erittäin helpoksi. Frontend toimii kaikissa web-selaimissa.​
+
+Backend: PHP/MySQL/JSON-tiedostot. Backend ottaa vastaan JSON-muotoiset kyselyn tulokset, ja 
+tallentaa ne tietokantaan ja/tai JSON-tiedostoihin. Backendin admin-tilassa on kaksi pääsivua: 
+tulosten tarkastelu ja tulosten vertailu. Molemmilla pääsivuilla tuloksia on mahdollista 
+suodattaa ajan perusteella. Lisäksi backendissä on mahdollisuus muokata kyselyä, mutta tämä 
+toiminto on oletuksena pois päältä. Backendin admin-tilaan kirjaudutaan käyttäjätunnuksilla. 
+Backend toimii kaikilla palvelimilla, joilla on käytössä PHP, eli käytännössä kaikilla 
+palvelimilla.​
+
+Järjestelmä on peruskäytössä täysin toimiva, mutta lisäominaisuudet, kuten palautekyselyn 
+muokkaus tai vastausten visuaalinen esitys graafeina ovat keskeneräisiä tai puuttuvat. 
+Kokonaisuudessaan järjestelmä on mahdollisimman helppokäyttöinen, ja toimii mahdollisimman 
+yksinkertaisella ja halvalla alustalla. Se on mahdollista asentaa toimimaan myös ilman 
+tietokantaa, jolloin dataa säilytetään pelkästään JSON-tiedostoissa. Tämä soveltuu tapauksiin 
+joissa palautteiden määrä jää alle tuhanteen kappaleeseen, koska tiedostojen käsittely voi 
+alkaa tämän jälkeen hidastamaan toimintaa. Järjestelmässä ei ole datan varmuuskopiointia, 
+mutta palvelintilan tarjoaja hoitaa yleensä sekä tietokannan että tiedostojen varmuuskopioinnin. 
+Järjestelmän tietoturva on perustasoa. Julkaistuun järjestelmään ei muutaman kuukauden koekäytön 
+aikana kohdistunut mitään tietoturvauhkia ja se toimi koko ajan normaalilla tavalla.
+
