@@ -22,7 +22,8 @@ export class SurveyComponent implements OnInit {
   alertAndSaveResults(sender: Model) {
     const results = JSON.stringify(sender.data);
     // alert(results); // Voidaan näyttää lähetettävä data alertissa
-    saveSurveyResults('http://localhost/emt_backend/index.php', results);
+    // Backendin osoite, kun käytetään lokaalia palvelinta. Vaihda tarvittaessa.
+    saveSurveyResults('http://localhost/mt_backend/index.php', results);
   }
 }
 /*
