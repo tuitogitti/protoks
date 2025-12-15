@@ -1,6 +1,7 @@
 <?php
 session_start();
-require('data/file.php');
+require('data/file.php'); // Tallennetaan tulokset tiedostoon
+//require ('saveresults_to_db.php'); // Tallennetaan tulokset tietokantaan
 if ($_SESSION['ktun'] === $ktun && $_SESSION['ssana'] === $ssana) { ?>
 
   <!DOCTYPE html>
@@ -24,12 +25,25 @@ if ($_SESSION['ktun'] === $ktun && $_SESSION['ssana'] === $ssana) { ?>
     foreach ($decodedData as $phpobj) {
 
       $jsonobj = json_encode($phpobj);
+      // Tallennetaan tulokset tiedostoon
       fwrite($d, $jsonobj . "\n");
     }
     fclose($d);
+    
+    /*
+    // Tallennetaan tulokset tietokantaan 
+    $success = saveJsonData($db_server, $db_user, $db_pass, $db_name, $jsondata);
+
+	if ($success === true) {
+    echo "Tallennus onnistui.\n";
+	} else {
+    echo "Tallennusvirhe.\n";
+	}     
+    */  
     ?>
 
   </body>
 
   </html>
 <?php } ?>
+

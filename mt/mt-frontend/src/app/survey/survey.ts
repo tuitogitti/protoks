@@ -1,28 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { Model } from 'survey-core';
 import { SurveyModule } from 'survey-angular-ui';
 
 @Component({
   selector: 'app-survey',
   imports: [SurveyModule],
-  templateUrl: './survey.component.html',
+  templateUrl: './survey.html',
+  styleUrl: './survey.css',
 })
-export class SurveyComponent implements OnInit {
+export class Survey implements OnInit {
   // Kyselydata otetaan sisään komponenttiin
-  @Input() surveyJson!: object;
+  surveyJson = input();
   surveyModel!: Model;
 
   ngOnInit() {
-	// Kysely rakennetaan
-    const survey = new Model(this.surveyJson);
+    // Kysely rakennetaan
+    const survey = new Model(this.surveyJson());
     survey.onComplete.add(this.alertAndSaveResults);
     this.surveyModel = survey;
   }
-   // Kyselyn tulokset lähetetään palvelimelle
+  // Kyselyn tulokset lähetetään palvelimelle
   alertAndSaveResults(sender: Model) {
     const results = JSON.stringify(sender.data);
-    // alert(results); // Voidaan näyttää lähetettävä data alertissa
-    // Backendin osoite, kun käytetään lokaalia palvelinta. Vaihda tarvittaessa.
+    // alert(results);
+    // Vaihda tähän oman backendisi url
     saveSurveyResults('http://localhost/mt_backend/index.php', results);
   }
 }

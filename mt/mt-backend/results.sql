@@ -1,0 +1,4 @@
+CREATE TABLE results (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    results JSON NOT NULL
+);

@@ -28,8 +28,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -44,8 +44,8 @@ export const surveyjson1 = {
           maximumRateDescription: 'Suosittelisin lämpimästi',
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -63,8 +63,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -73,7 +73,7 @@ export const surveyjson1 = {
           name: 'Saan tarpeeksi apua',
           title: 'Saan arjessani riittävästi apua ja palvelua',
           choices: [
-            'Täysin samaa mieltä',
+           'Täysin samaa mieltä',
             'Melko samaa mieltä',
             'En osaa sanoa',
             'Melko eri meltä',
@@ -81,8 +81,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -99,8 +99,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -108,11 +108,11 @@ export const surveyjson1 = {
           type: 'radiogroup',
           name: 'Minulla on yksinäinen olo',
           title: 'Minulla on yksinäinen olo',
-          choices: ['Ei koskaan', 'Harvoin', 'Usein', 'En osaa sanoa'],
+          choices: ['Ei koskaan','Harvoin', 'Usein','En osaa sanoa'],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -129,8 +129,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -148,8 +148,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -166,8 +166,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -184,8 +184,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [
@@ -202,8 +202,8 @@ export const surveyjson1 = {
           ],
         },
       ],
-      isRequired: true,
-      requiredErrorText: 'Valitse yksi vaihtoehto',
+       isRequired: true,
+       requiredErrorText: 'Valitse yksi vaihtoehto',
     },
     {
       elements: [

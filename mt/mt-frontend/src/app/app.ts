@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { SurveyComponent } from './survey/survey.component';
+import { Survey } from './survey/survey';
 import { surveyjson1 } from '../surveydata/surveyjson1';
 
 @Component({
   selector: 'app-root',
-  imports: [SurveyComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  imports: [Survey],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class AppComponent implements OnInit {
+export class App implements OnInit {
   surveyJson: any = {};
-
+   
+  
   ngOnInit() {
     /* kysely on "kovakoodattuna" frontendissä surveydata-kansiossa.
 	   Se voitaisiin myös hakea palvelimelta, missä sitä voitaisiin muokata.
